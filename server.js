@@ -4,7 +4,7 @@ var fs = require('fs');
 var app = express();
 var port = process.env.port || 3000;
 
-app.use(express.static(__dirname + '/build'));
+
 
 
 
@@ -29,35 +29,11 @@ var walkDirectory = function(path, obj) {
 walkDirectory('./', filetree);
 console.log(filetree);
 
-// function buildTree(newPath){
-// 	var files = fs.readdirSync(newPath);
-// 	path = newPath;
-// 	console.log(files);
-// 		for (var i = 0; i < files.length; i++){
-// 		//files.forEach(function(file) {
-// 			if (files[i].indexOf('.') != -1){
-// 				tree[files[i]] = null;
-// 			}
-// 			else{
-// 				addPath = files[i];
-// 				path = path + '/' + addPath;
-// 				console.log(addPath);
-// 				tree[files[i]] = {};
-// 				buildTree(path)
+app.get('/backend', function(req, res){
+	res.json(filetree);
+});
 
-// 			}
-// 		};
-// console.log(tree);
-// }
-
-
-
-// buildTree('./');
-
-
-app.use((req, res)=>{
-
-})
+app.use('/files', express.static(__dirname + '/build'));
 
 app.listen(port, function(){
 	console.log(`server up on ${port}`);

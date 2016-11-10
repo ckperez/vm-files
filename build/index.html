@@ -3,9 +3,26 @@
 	<head>
 		<meta charset=utf-8 />
 		<title>Files</title>
+		
+		<script id="fileTree" type="x-handlebars-template">
+
+		</script>
+
 	</head>
 	<body>
-		<h1>Files</p>
-		<script src="">
+		<div>
+
+		</div>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$.ajax({
+    			type: 'HEAD',
+				datatype: "json",
+    			url: 'http://localhost:3000/backend',
+    			success: function(data, message, xhr){
+        			console.log(data, message);
+    			}
+			});
+		</script>
 	</body>
 </html>
